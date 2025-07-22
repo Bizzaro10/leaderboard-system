@@ -1,6 +1,6 @@
 # Leaderboard System
 
-This project contains both backend (NodeJS/Express/MongoDB) and frontend (ReactJS) for a real-time leaderboard system.
+This project contains both backend (NodeJS/Express/MongoDB) and frontend (ReactJS) for a real-time leaderboard system.[Live Demo](https://leaderboard-systemkira.netlify.app/)
 
 ## Structure
 
