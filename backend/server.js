@@ -11,7 +11,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
-const _dirname = path.resolve();
+
 
 app.use(cors());
 app.use(express.json());
