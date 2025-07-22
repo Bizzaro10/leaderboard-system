@@ -185,5 +185,38 @@ io.on("connection", (socket) => {
 });
 
 // Start server
+// Ensure secure connection and production-ready settings
+const isProduction = process.env.NODE_ENV === "production";
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// Configure security headers
+app.use((req, res, next) => {
+  const allowedOrigins = [
+    "https://leaderboard-systemkira.netlify.app",
+    process.env.FRONTEND_URL || "https://leaderboard-systemkira.netlify.app",
+    "http://localhost:3000",
+  ];
+
+  res.header("Access-Control-Allow-Origin", allowedOrigins.join(", "));
+  res.header("X-Frame-Options", "DENY");
+  res.header("X-Content-Type-Options", "nosniff");
+  res.header("X-XSS-Protection", "1; mode=block");
+  res.header("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.header(
+    "Content-Security-Policy",
+    "default-src 'self' https: 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com;"
+  );
+
+  if (isProduction && req.headers["x-forwarded-proto"] !== "https") {
+    res.redirect(301, `https://${req.hostname}${req.url}`);
+  }
+  next();
+});
+
+// Start server
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  if (isProduction) {
+    console.log("Server is running in production mode");
+  }
+});
