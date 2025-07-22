@@ -11,7 +11,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://leaderboard-systemkira.netlify.app/",
+    origin: "https://leaderboard-system-2e2v.onrender.com",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
@@ -25,7 +25,7 @@ const io = new Server(server, {
 
 app.use(
   cors({
-    origin: "https://leaderboard-systemkira.netlify.app/",
+    origin: "https://leaderboard-system-2e2v.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: [
