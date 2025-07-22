@@ -9,15 +9,25 @@ const multer = require("multer");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "*" } });
-
-
+const io = new Server(server, {
+  cors: {
+    origin: "https://leaderboard-systemkira.netlify.app/",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Content-Length",
+      "X-Requested-With",
+    ],
+    credentials: true,
+  },
+});
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "*",
+    origin: "https://leaderboard-systemkira.netlify.app/",
     credentials: true,
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
       "Authorization",
