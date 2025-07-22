@@ -17,6 +17,14 @@ app.use(
   cors({
     origin: process.env.FRONTEND_URL || "*",
     credentials: true,
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Content-Length",
+      "X-Requested-With",
+    ],
+    preflightContinue: true,
   })
 );
 app.use(express.json());
