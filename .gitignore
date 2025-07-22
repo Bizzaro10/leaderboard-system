@@ -1,0 +1,9 @@
+# Dependencies in all directories
+**/node_modules/
+
+# Environment variables
+.env
+
+
+# Environment files in subdirectories
+backend/.env*
