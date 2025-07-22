@@ -13,7 +13,12 @@ const io = new Server(server, { cors: { origin: "*" } });
 
 
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "*",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Multer setup for image uploads
