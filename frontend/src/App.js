@@ -3,8 +3,8 @@ import io from "socket.io-client";
 import "./index.css";
 import { useRef } from "react";
 
-const API = "http://localhost:5000";
-const socket = io(API);
+const API = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const socket = io(API, { transports: ["websocket"] });
 
 function formatPoints(points) {
   return (
